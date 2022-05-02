@@ -1,0 +1,55 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    background-image: url(https://wallpaperaccess.com/full/4685960.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}       
+
+body{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.box{
+    width: 250px;
+    height: 50%;
+    background-image: url(https://i.pinimg.com/474x/9b/2e/8d/9b2e8d6ed53ac4ad9afae34e9eb572e9.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgb(110, 26, 255);
+    border-radius: 10px;
+}
+
+button{
+    margin-top: 20px;
+    width: 50%;
+    height: 10%;
+    position: relative;
+    background-color: aquamarine;
+    border: 2px solid rgb(0, 255, 26);
+    font-family: "montserrat";
+    font-size: 15px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover{
+    background-color: white;
+}
+
+img{
+    width: 60px;
+    margin-bottom: 50px;
+}
