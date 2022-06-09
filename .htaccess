@@ -6,3 +6,14 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ $1.html [L]
+
+Options +FollowSymLinks 
+RewriteEngine on 
+RewriteCond %{HTTP_HOST} . 
+RewriteCond %{HTTP_HOST} !^vuhoanh\.com 
+RewriteRule (.*) https://vuhoanh.com/$1 [R=301,L]
+
+RewriteEngine on
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !^http://(www.)?vuhoanh.com/.*$ [NC]
+RewriteRule .(gif|jpg)$ – [F]
