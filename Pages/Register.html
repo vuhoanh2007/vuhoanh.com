@@ -1,0 +1,81 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../Assets/css/style.css">
+        <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+        <title>H - Page</title>
+    </head>
+
+    <body>
+        <div class="box">
+            <div class="logo">
+                <img src="../Assets/img/logo.png" alt="logo">
+            </div>
+                <input id="Uname" type="text" placeholder="Tên tài khoản" />
+                <br/>
+                <input name="email" id="email" type="text" placeholder="E-mail" />
+                <br/>
+                <input id="Psw" type="password" placeholder="Mật khẩu"/>
+                <button id="Signup" class="btn-register">Đăng kí</button>
+                <a  href="Login.html">Đã có tk?</a>/>
+        </div>
+    </body>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-analytics.js";
+        import {getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-database.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-auth.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyDL48TApBpiu8Y6AsNVcoH8-OTN1vCBEFY",
+          authDomain: "mess-1.firebaseapp.com",
+          databaseURL: "https://mess-1-default-rtdb.asia-southeast1.firebasedatabase.app",
+          projectId: "mess-1",
+          storageBucket: "mess-1.appspot.com",
+          messagingSenderId: "930665318390",
+          appId: "1:930665318390:web:865e73cb1f98f40954e9d7",
+          measurementId: "G-BDE8FKJ8Q5"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const database = getDatabase(app);
+        const auth = getAuth();
+
+Signup.addEventListener('click', (e) => {
+
+    var email=document.getElementById('email').value;
+    var uname=document.getElementById('Uname').value;
+    var password=document.getElementById('Psw').value;
+
+    createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+    // Signed in 
+        const user = userCredential.user;
+
+        set(ref(database, 'user/' + user.uid), {
+            uname: uname,
+            email: email,
+            password: password
+        })
+        alert("Tài khoản đã đc tạo!");
+    // ...
+    })
+    .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+
+        alert("Lỗi con mẹ nó rồi =((");
+    // ..
+    });
+})
+      </script>
+
+</html>
