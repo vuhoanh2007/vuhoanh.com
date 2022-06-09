@@ -1,2 +1,8 @@
 Options -Indexes
-RewriteRule ^category/(.+)$ https://vuhoanh.com/$1 [R=301,L]
+
+RewriteRule ^Pages/(.+)$ https://vuhoanh.com/$1 [R=301,L]
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ $1.html [L]
